@@ -29,18 +29,27 @@ console.log("Sconto 40%: " + scontoQuaranta);
 if (isNaN(età) || isNaN(kilometriDaPercorrere)) {
     alert ("Per favore inserire solo valori numerici!")
 }
-
+let sconto;
+let etàSconto;
+let prezzoTotale;
 
 if ( età < 18 )  {
-    document.getElementById ("sconto-applicato").innerHTML = scontoVenti ;
-    document.getElementById ("età").innerHTML = età + " anni (Sconto 20%)" ;
-    document.getElementById ("prezzo-biglietto").innerHTML = (prezzoBigliettoPerKilometri - scontoVenti) ;
+    sconto = scontoVenti.toFixed(2);
+    etàSconto = età + " anni (Sconto 20%)" ;
+    prezzoTotale = (prezzoBigliettoPerKilometri - scontoVenti).toFixed(2);
+    
 } else if (età > 65) {
-    document.getElementById ("sconto-applicato").innerHTML = scontoQuaranta ;
-    document.getElementById ("età").innerHTML = età + " anni (Sconto 40%)" ;
-    document.getElementById ("prezzo-biglietto").innerHTML = (prezzoBigliettoPerKilometri - scontoQuaranta) ;
+    sconto = scontoQuaranta.toFixed(2) ;
+    etàSconto = età + " anni (Sconto 40%)" ;
+    prezzoTotale = (prezzoBigliettoPerKilometri - scontoQuaranta).toFixed(2);
+    
 } else {
-    document.getElementById ("sconto-applicato").innerHTML = 0 ;
-    document.getElementById ("età").innerHTML = età + " anni (Nessuno Sconto)" ;
-    document.getElementById ("prezzo-biglietto").innerHTML = prezzoBigliettoPerKilometri ;
+    sconto = 0 ;
+    etàSconto = età + " anni (Nessuno Sconto)" ;
+    prezzoTotale = prezzoBigliettoPerKilometri.toFixed(2);
+    
 }
+
+document.getElementById ("sconto-applicato").innerHTML = sconto;
+document.getElementById ("età").innerHTML = etàSconto;
+document.getElementById ("prezzo-biglietto").innerHTML = prezzoTotale;
